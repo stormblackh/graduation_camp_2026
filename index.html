@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSIS Ignatius Global School - Futuristic Portal</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header id="navbar">
+    <nav>
+      <div class="logo-container">
+        <i class="fa-solid fa-atom"></i>
+        <div class="logo-text">
+          <h1>Graduation Camp</h1>
+          <p>Ignatius Global School</p>
+        </div>
+      </div>
+      <div class="hamburger" id="hamburger-btn">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </div>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#" class="nav-item active" onclick="switchSection('home', this)">Home</a></li>
+        <li><a href="#" class="nav-item" onclick="switchSection('event', this)">Event</a></li>
+        <li><a href="#" class="nav-item" onclick="switchSection('registrasi', this)">Registrasi Lomba</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HOMEPAGE -->
+    <section id="home" class="active-section">
+      <!-- Hero Slider -->
+      <div class="hero-slider">
+        <div class="slide active-slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <h2>Portal Masa Depan OSIS IGS</h2>
+            <p>Wadah kolaborasi, inovasi, dan aksi kepemimpinan generasi futuris Ignatius Global School.</p>
+            <button class="btn" onclick="goToRegister('')">
+              <i class="fa-solid fa-rocket"></i> Daftar Lomba Sekarang
+            </button>
+          </div>
+        </div>
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200');">
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <h2>Eksplorasi Potensi Tanpa Batas</h2>
+            <p>Ikuti ajang kompetisi bergengsi dan raih prestasi gemilang tingkat sekolah & nasional.</p>
+            <button class="btn btn-outline" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
+              <i class="fa-solid fa-compass"></i> Jelajahi Event
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Counter -->
+      <div class="stats-container">
+        <div class="stat-card">
+          <i class="fa-solid fa-trophy"></i>
+          <h3 class="counter" data-target="15">0</h3>
+          <p>Lomba Diselenggarakan</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-users"></i>
+          <h3 class="counter" data-target="200">0</h3>
+          <p>Peserta Terdaftar</p>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-bolt"></i>
+          <h3 class="counter" data-target="8">0</h3>
+          <p>Divisi OSIS Aktif</p>
+        </div>
+      </div>
+
+      <!-- Visi Misi Card -->
+      <div class="visi-misi">
+        <div class="card">
+          <h3><i class="fa-solid fa-eye" style="color: var(--accent-cyan);"></i> Visi OSIS</h3>
+          <p>Mewujudkan siswa Ignatius Global School yang berkarakter unggul, berdaya saing global, kreatif, serta menguasai sains dan teknologi masa depan berbasis kekeluargaan.</p>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-bullseye" style="color: var(--accent-pink);"></i> Misi Utama</h3>
+          <p>1. Mengembangkan minat bakat siswa melalui event interaktif modern.<br>2. Menjadi wadah aspirasi yang transparan, berbasis digital, dan responsif.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PAGE EVENT -->
+    <section id="event">
+      <div style="text-align: center;">
+        <h2 style="font-size: 2.2rem; background: linear-gradient(90deg, #ffffff, var(--accent-cyan)); background-clip: text; -webkit-text-fill-color: transparent;">Agenda & Competition 2026</h2>
+        <p style="color: var(--text-muted);">Pilih kategori event yang ingin kamu ikuti!</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-container">
+        <button class="filter-btn active" onclick="filterEvents('all', this)">Semua Event</button>
+        <button class="filter-btn" onclick="filterEvents('seni', this)">Seni & Musik</button>
+        <button class="filter-btn" onclick="filterEvents('olahraga', this)">E-Sports</button>
+        <button class="filter-btn" onclick="filterEvents('akademik', this)">Akademik</button>
+      </div>
+
+      <!-- Grid Event Cards -->
+      <div class="event-grid">
+        <!-- Card 1 -->
+        <div class="event-card" data-category="seni">
+          <div class="event-img">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" alt="Musik">
+            <span class="category-badge">Seni & Musik</span>
+          </div>
+          <div class="event-content">
+            <div>
+              <h3>IGS Acoustic Fest</h3>
+              <p>Ajang unjuk bakat bermusik dan bernyanyi antarkelas dengan nuansa panggung modern.</p>
+            </div>
+            <div class="event-actions">
+              <button class="btn btn-detail" onclick="openModal('IGS Acoustic Fest', 'Kompetisi akustik untuk mengekspresikan bakat musikalitas siswa. Setiap kelas wajib mengirimkan maksimal 2 tim terbaik.')">
+                Detail
+              </button>
+              <button class="btn" onclick="goToRegister('IGS Acoustic Fest')">Daftar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="event-card" data-category="olahraga">
+          <div class="event-img">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="E-Sports">
+            <span class="category-badge">E-Sports</span>
+          </div>
+          <div class="event-content">
+            <div>
+              <h3>E-Sports Championship</h3>
+              <p>Turnamen Mobile Legends tahunan IGS. Pertempuran taktik dan strategi terkuat.</p>
+            </div>
+            <div class="event-actions">
+              <button class="btn btn-detail" onclick="openModal('E-Sports Championship', 'Turnamen MLBB sistem gugur. 1 Tim terdiri dari 5 Pemain Utama dan 1 Cadangan. Khusus siswa aktif IGS.')">
+                Detail
+              </button>
+              <button class="btn" onclick="goToRegister('E-Sports Championship')">Daftar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="event-card" data-category="akademik">
+          <div class="event-img">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500" alt="Debat">
+            <span class="category-badge">Akademik</span>
+          </div>
+          <div class="event-content">
+            <div>
+              <h3>English Debate Contest</h3>
+              <p>Asah kemampuan berpikir kritis dan wawasan internasional berbahasa Inggris.</p>
+            </div>
+            <div class="event-actions">
+              <button class="btn btn-detail" onclick="openModal('English Debate Contest', 'Lomba debat sistem Asian Parliamentary. Mosi melingkupi isu AI, sains, dan pendidikan masa depan.')">
+                Detail
+              </button>
+              <button class="btn" onclick="goToRegister('English Debate Contest')">Daftar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: WEB REGISTRASI -->
+    <section id="registrasi">
+      <div class="form-wrapper">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+          <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ffffff, var(--accent-cyan)); background-clip: text; -webkit-text-fill-color: transparent;">Formulir Pendaftaran</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Data pendaftaran tersambung langsung secara real-time ke sistem OSIS.</p>
+        </div>
+
+        <form id="registration-form">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" id="nama" name="nama" required placeholder="Contoh: Budi Santoso">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="kelas">Kelas / Tingkat</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-school"></i>
+              <input type="text" id="kelas" name="kelas" required placeholder="Contoh: X IPA 1 / XI IPS 2">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">No. WhatsApp Active</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-brands fa-whatsapp"></i>
+              <input type="tel" id="whatsapp" name="whatsapp" required placeholder="08123456789">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="event">Kategori Event Lomba</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-trophy"></i>
+              <select id="event" name="event" required>
+                <option value="">-- Pilih Lomba --</option>
+                <option value="IGS Acoustic Fest">IGS Acoustic Fest</option>
+                <option value="E-Sports Championship">E-Sports Championship</option>
+                <option value="English Debate Contest">English Debate Contest</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            <i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran
+          </button>
+        </form>
+
+        <div id="status-msg"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL POPUP -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle" style="color: #ffffff; margin-bottom: 0.8rem; font-size: 1.4rem;"></h3>
+      <p id="modalDesc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6;"></p>
+      <button class="btn" id="modalRegisterBtn" style="width: 100%; justify-content: center;">Daftar Lomba Ini</button>
+    </div>
+  </div>
+
+  <!-- FOOTER TERUPDATE -->
+  <footer>
+    <div class="footer-container">
+      <!-- Kolom 1: Profil & Peta -->
+      <div class="footer-col">
+        <h3>OSIS IGS PORTAL</h3>
+        <p>Organisasi Siswa Intra Sekolah - Ignatius Global School Palembang. Menjadi pusat kreasi, aksi, dan inovasi generasi penerus bangsa.</p>
+        
+        <a href="https://maps.google.com/?q=Ignatius+Global+School+Palembang" target="_blank" rel="noopener noreferrer" class="map-btn">
+          <i class="fa-solid fa-location-dot"></i> Google Maps Lokasi IGS
+        </a>
+      </div>
+
+      <!-- Kolom 2: Quick Links -->
+      <div class="footer-col">
+        <h3>Navigasi Cepat</h3>
+        <ul class="footer-links">
+          <li><a href="#" onclick="switchSection('home', document.querySelectorAll('.nav-item')[0])"><i class="fa-solid fa-angle-right"></i> Beranda / Home</a></li>
+          <li><a href="#" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])"><i class="fa-solid fa-angle-right"></i> Agenda & Event Lomba</a></li>
+          <li><a href="#" onclick="switchSection('registrasi', document.querySelectorAll('.nav-item')[2])"><i class="fa-solid fa-angle-right"></i> Form Registrasi</a></li>
+        </ul>
+      </div>
+
+      <!-- Kolom 3: Media Sosial -->
+      <div class="footer-col">
+        <h3>Koneksi Sosial</h3>
+        <p>Ikuti saluran resmi OSIS IGS untuk pembaruan informasi terkini!</p>
+        
+        <div class="social-icons">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn ig" title="Instagram OSIS IGS">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn yt" title="YouTube Channel">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn tw" title="Twitter / X">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-btn tt" title="TikTok OSIS">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+          <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="social-btn line" title="LINE Official Account">
+            <i class="fa-brands fa-line"></i>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn gh" title="GitHub Repository">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 OSIS Ignatius Global School. Futuristic Experience Designed with <i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i></p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script src="script.js"></script>
+</body>
+</html>
