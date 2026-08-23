@@ -3,20 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OSIS Ignatius Global School - Futuristic Portal</title>
-  
-  <!-- Google Fonts & Font Awesome Icons -->
+  <title>OSIS Ignatius Global School - Aurora Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <header id="navbar">
     <nav>
       <div class="logo-container">
-        <i class="fa-solid fa-atom"></i>
+        <i class="fa-solid fa-graduation-cap"></i>
         <div class="logo-text">
           <h1>Graduation Camp</h1>
           <p>Ignatius Global School</p>
@@ -34,14 +30,12 @@
   </header>
 
   <main>
-    <!-- SECTION 1: HOMEPAGE -->
     <section id="home" class="active-section">
-      <!-- Hero Slider -->
       <div class="hero-slider">
         <div class="slide active-slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200');">
           <div class="slide-overlay"></div>
           <div class="slide-content">
-            <h2>Portal Masa Depan OSIS IGS</h2>
+            <h2>Portal Aurora OSIS IGS</h2>
             <p>Wadah kolaborasi, inovasi, dan aksi kepemimpinan generasi futuris Ignatius Global School.</p>
             <button class="btn" onclick="goToRegister('')">
               <i class="fa-solid fa-rocket"></i> Daftar Lomba Sekarang
@@ -61,7 +55,8 @@
         </div>
       </div>
 
-      <!-- Live Counter -->
+      <div class="aurora-divider"></div>
+
       <div class="stats-container">
         <div class="stat-card">
           <i class="fa-solid fa-trophy"></i>
@@ -80,27 +75,26 @@
         </div>
       </div>
 
-      <!-- Visi Misi Card -->
+      <div class="aurora-divider"></div>
+
       <div class="visi-misi">
         <div class="card">
-          <h3><i class="fa-solid fa-eye" style="color: var(--accent-cyan);"></i> Visi OSIS</h3>
+          <h3><i class="fa-solid fa-eye" style="color: var(--teal);"></i> Visi OSIS</h3>
           <p>Mewujudkan siswa Ignatius Global School yang berkarakter unggul, berdaya saing global, kreatif, serta menguasai sains dan teknologi masa depan berbasis kekeluargaan.</p>
         </div>
         <div class="card">
-          <h3><i class="fa-solid fa-bullseye" style="color: var(--accent-pink);"></i> Misi Utama</h3>
+          <h3><i class="fa-solid fa-bullseye" style="color: var(--blush-pink);"></i> Misi Utama</h3>
           <p>1. Mengembangkan minat bakat siswa melalui event interaktif modern.<br>2. Menjadi wadah aspirasi yang transparan, berbasis digital, dan responsif.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: PAGE EVENT -->
     <section id="event">
       <div style="text-align: center;">
-        <h2 style="font-size: 2.2rem; background: linear-gradient(90deg, #ffffff, var(--accent-cyan)); background-clip: text; -webkit-text-fill-color: transparent;">Agenda & Competition 2026</h2>
-        <p style="color: var(--text-muted);">Pilih kategori event yang ingin kamu ikuti!</p>
+        <h2 style="font-size: 2.2rem; background: linear-gradient(90deg, var(--white), var(--teal), var(--sky-blue)); background-clip: text; -webkit-text-fill-color: transparent;">Agenda & Competition 2026</h2>
+        <p style="color: var(--sky-blue);">Pilih kategori event yang ingin kamu ikuti!</p>
       </div>
 
-      <!-- Filter Buttons -->
       <div class="filter-container">
         <button class="filter-btn active" onclick="filterEvents('all', this)">Semua Event</button>
         <button class="filter-btn" onclick="filterEvents('seni', this)">Seni & Musik</button>
@@ -108,9 +102,7 @@
         <button class="filter-btn" onclick="filterEvents('akademik', this)">Akademik</button>
       </div>
 
-      <!-- Grid Event Cards -->
       <div class="event-grid">
-        <!-- Card 1 -->
         <div class="event-card" data-category="seni">
           <div class="event-img">
             <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" alt="Musik">
@@ -130,7 +122,6 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="event-card" data-category="olahraga">
           <div class="event-img">
             <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="E-Sports">
@@ -150,7 +141,6 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="event-card" data-category="akademik">
           <div class="event-img">
             <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500" alt="Debat">
@@ -172,12 +162,11 @@
       </div>
     </section>
 
-    <!-- SECTION 3: WEB REGISTRASI -->
     <section id="registrasi">
       <div class="form-wrapper">
         <div style="text-align: center; margin-bottom: 2.5rem;">
-          <h2 style="font-size: 2rem; background: linear-gradient(90deg, #ffffff, var(--accent-cyan)); background-clip: text; -webkit-text-fill-color: transparent;">Formulir Pendaftaran</h2>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Data pendaftaran tersambung langsung secara real-time ke sistem OSIS.</p>
+          <h2 style="font-size: 2rem; background: linear-gradient(90deg, var(--white), var(--teal), var(--sky-blue)); background-clip: text; -webkit-text-fill-color: transparent;">Formulir Pendaftaran</h2>
+          <p style="color: var(--sky-blue); font-size: 0.9rem;">Data pendaftaran tersambung langsung secara real-time ke sistem OSIS.</p>
         </div>
 
         <form id="registration-form">
@@ -228,30 +217,25 @@
     </section>
   </main>
 
-  <!-- MODAL POPUP -->
   <div class="modal" id="eventModal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h3 id="modalTitle" style="color: #ffffff; margin-bottom: 0.8rem; font-size: 1.4rem;"></h3>
-      <p id="modalDesc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6;"></p>
+      <h3 id="modalTitle" style="color: var(--white); margin-bottom: 0.8rem; font-size: 1.4rem;"></h3>
+      <p id="modalDesc" style="color: var(--sky-blue); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6;"></p>
       <button class="btn" id="modalRegisterBtn" style="width: 100%; justify-content: center;">Daftar Lomba Ini</button>
     </div>
   </div>
 
-  <!-- FOOTER TERUPDATE -->
   <footer>
     <div class="footer-container">
-      <!-- Kolom 1: Profil & Peta -->
       <div class="footer-col">
         <h3>OSIS IGS PORTAL</h3>
         <p>Organisasi Siswa Intra Sekolah - Ignatius Global School Palembang. Menjadi pusat kreasi, aksi, dan inovasi generasi penerus bangsa.</p>
-        
         <a href="https://maps.google.com/?q=Ignatius+Global+School+Palembang" target="_blank" rel="noopener noreferrer" class="map-btn">
           <i class="fa-solid fa-location-dot"></i> Google Maps Lokasi IGS
         </a>
       </div>
 
-      <!-- Kolom 2: Quick Links -->
       <div class="footer-col">
         <h3>Navigasi Cepat</h3>
         <ul class="footer-links">
@@ -261,11 +245,9 @@
         </ul>
       </div>
 
-      <!-- Kolom 3: Media Sosial -->
       <div class="footer-col">
         <h3>Koneksi Sosial</h3>
         <p>Ikuti saluran resmi OSIS IGS untuk pembaruan informasi terkini!</p>
-        
         <div class="social-icons">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn ig" title="Instagram OSIS IGS">
             <i class="fa-brands fa-instagram"></i>
@@ -290,11 +272,10 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 OSIS Ignatius Global School. Futuristic Experience Designed with <i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i></p>
+      <p>&copy; 2026 OSIS Ignatius Global School. Aurora Experience Designed with <i class="fa-solid fa-bolt" style="color: var(--teal);"></i></p>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC -->
   <script src="script.js"></script>
 </body>
 </html>

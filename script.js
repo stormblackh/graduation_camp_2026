@@ -1,7 +1,5 @@
-// --- INTEGRASI GOOGLE APPS SCRIPT ---
 const SCRIPT_URL = "URL_GOOGLE_APPS_SCRIPT_ANDA";
 
-// --- NAVBAR DYNAMIC SCROLL EFFECT ---
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
@@ -11,7 +9,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// --- RESPONSIVE HAMBURGER MENU ---
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu = document.getElementById('nav-menu');
 
@@ -19,7 +16,6 @@ hamburgerBtn.addEventListener('click', () => {
     navMenu.classList.toggle('show');
 });
 
-// --- NAVIGASI SWITCH SECTION WITH ANIMATION ---
 function switchSection(sectionId, element) {
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active-section'));
     document.getElementById(sectionId).classList.add('active-section');
@@ -33,7 +29,6 @@ function switchSection(sectionId, element) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// --- AUTOMATIC HERO SLIDER ---
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 
@@ -44,7 +39,6 @@ function autoSlide() {
 }
 setInterval(autoSlide, 5000);
 
-// --- ANIMATED COUNTER ---
 const counters = document.querySelectorAll('.counter');
 
 function startCounters() {
@@ -66,7 +60,6 @@ function startCounters() {
 }
 window.addEventListener('load', startCounters);
 
-// --- FILTER CATEGORY EVENT ---
 function filterEvents(category, button) {
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
@@ -81,7 +74,6 @@ function filterEvents(category, button) {
     });
 }
 
-// --- MODAL POPUP DETAILED INFO ---
 const modal = document.getElementById('eventModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
@@ -101,17 +93,15 @@ function closeModal() {
     modal.classList.remove('active-modal');
 }
 
-// --- AUTO-SELECT FORM EVENT ---
 function goToRegister(eventName) {
     const regNavBtn = document.querySelectorAll('.nav-links a')[2];
     switchSection('registrasi', regNavBtn);
-    
+
     if (eventName) {
     document.getElementById('event').value = eventName;
     }
 }
 
-// --- SUBMIT FORM REAL-TIME KE SPREADSHEET ---
 const form = document.getElementById('registration-form');
 const statusMsg = document.getElementById('status-msg');
 const submitBtn = document.getElementById('submit-btn');
