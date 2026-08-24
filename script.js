@@ -1,145 +1,267 @@
-const SCRIPT_URL = "URL_GOOGLE_APPS_SCRIPT_ANDA";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbym_SBYFM-fbR-4oFv2dP8RoM2bhr_V_J1i7E6_22xi0zBKQlL6GzoLCnj_XuXJQuhV/exec";
 
-// --- SCROLL EFFECT NAVBAR ---
+const events = [
+  { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "#" },
+  { name: "Step Together", teamSize: 4, icon: "fa-shoe-prints", accent: "cyan", lineUrl: "#" },
+  { name: "Outbound", teamSize: 6, icon: "fa-campground", accent: "purple", lineUrl: "#" },
+  { name: "Echo Hunt", teamSize: 5, icon: "fa-ear-listen", accent: "pink", lineUrl: "#" }
+];
+
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
+  if (window.scrollY > 30) {
     navbar.classList.add('scrolled');
-    } else {
+  } else {
     navbar.classList.remove('scrolled');
-    }
+  }
 });
 
-// --- HAMBURGER MENU ---
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu = document.getElementById('nav-menu');
 
 hamburgerBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
+  navMenu.classList.toggle('show');
 });
 
-// --- SWITCH SECTION ---
 function switchSection(sectionId, element) {
-    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active-section'));
-    document.getElementById(sectionId).classList.add('active-section');
+  document.querySelectorAll('section').forEach(sec => sec.classList.remove('active-section'));
+  document.getElementById(sectionId).classList.add('active-section');
 
-    if (element) {
+  if (element) {
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
     element.classList.add('active');
-    }
+  }
 
-    navMenu.classList.remove('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  navMenu.classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// --- HERO SLIDER ---
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 
 function autoSlide() {
-    slides[currentSlide].classList.remove('active-slide');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active-slide');
+  slides[currentSlide].classList.remove('active-slide');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active-slide');
 }
 setInterval(autoSlide, 5000);
 
-// --- COUNTER ---
 const counters = document.querySelectorAll('.counter');
+
 function startCounters() {
-    counters.forEach(counter => {
+  counters.forEach(counter => {
     const target = +counter.getAttribute('data-target');
     const speed = 150;
     const updateCount = () => {
-        const count = +counter.innerText;
-        const inc = target / speed;
-        if (count < target) {
+      const count = +counter.innerText;
+      const inc = target / speed;
+      if (count < target) {
         counter.innerText = Math.ceil(count + inc);
         setTimeout(updateCount, 25);
-        } else {
+      } else {
         counter.innerText = target;
-        }
+      }
     };
     updateCount();
-    });
+  });
 }
 window.addEventListener('load', startCounters);
 
-// --- FILTER EVENT ---
-function filterEvents(category, button) {
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    const cards = document.querySelectorAll('.event-card');
-    cards.forEach(card => {
-    if (category === 'all' || card.getAttribute('data-category') === category) {
-        card.style.display = 'flex';
-    } else {
-        card.style.display = 'none';
-    }
-    });
-}
-
-// --- MODAL POPUP ---
 const modal = document.getElementById('eventModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 const modalRegisterBtn = document.getElementById('modalRegisterBtn');
 
 function openModal(title, desc) {
-    modalTitle.innerText = title;
-    modalDesc.innerText = desc;
-    modalRegisterBtn.onclick = () => {
+  modalTitle.innerText = title;
+  modalDesc.innerText = desc;
+  modalRegisterBtn.onclick = () => {
     closeModal();
     goToRegister(title);
-    };
-    modal.classList.add('active-modal');
+  };
+  modal.classList.add('active-modal');
 }
 
 function closeModal() {
-    modal.classList.remove('active-modal');
+  modal.classList.remove('active-modal');
 }
 
-// --- AUTO-SELECT EVENT ---
-function goToRegister(eventName) {
-    const regNavBtn = document.querySelectorAll('.nav-links a')[2];
-    switchSection('registrasi', regNavBtn);
-    
-    if (eventName) {
-    document.getElementById('event').value = eventName;
-    }
-}
-
-// --- FORM SUBMIT REAL-TIME ---
+let currentStep = 1;
 const form = document.getElementById('registration-form');
+const btnNext = document.getElementById('btn-next');
+const btnBack = document.getElementById('btn-back');
+const btnSubmit = document.getElementById('btn-submit');
 const statusMsg = document.getElementById('status-msg');
-const submitBtn = document.getElementById('submit-btn');
+const memberContainer = document.getElementById('member-fields');
+const stepLineFill = document.querySelector('.step-line-fill');
+const stepDots = document.querySelectorAll('.step-dot');
+
+function goToStep(step) {
+  currentStep = step;
+
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active-step'));
+  document.querySelector('.form-step[data-step="' + step + '"]').classList.add('active-step');
+
+  stepDots.forEach(dot => {
+    const s = +dot.getAttribute('data-step');
+    dot.classList.remove('active', 'done');
+    if (s === step) dot.classList.add('active');
+    if (s < step) dot.classList.add('done');
+  });
+
+  if (step === 2) {
+    stepLineFill.classList.add('filled');
+  } else {
+    stepLineFill.classList.remove('filled');
+  }
+
+  btnBack.style.display = step === 1 ? 'none' : 'inline-flex';
+  btnNext.style.display = step === 1 ? 'inline-flex' : 'none';
+  btnSubmit.style.display = step === 2 ? 'inline-flex' : 'none';
+}
+
+const accentMap = {
+  green: { bg: 'rgba(0, 255, 170, 0.12)', color: 'var(--aurora-green)', border: 'rgba(0, 255, 170, 0.25)' },
+  cyan: { bg: 'rgba(0, 229, 255, 0.12)', color: 'var(--aurora-cyan)', border: 'rgba(0, 229, 255, 0.25)' },
+  purple: { bg: 'rgba(189, 0, 255, 0.12)', color: 'var(--aurora-purple)', border: 'rgba(189, 0, 255, 0.25)' },
+  pink: { bg: 'rgba(255, 0, 127, 0.12)', color: 'var(--aurora-pink)', border: 'rgba(255, 0, 127, 0.25)' }
+};
+
+btnNext.addEventListener('click', () => {
+  const lomba = document.getElementById('event').value;
+  const kelas = document.getElementById('kelas').value.trim();
+
+  if (!lomba || !kelas) {
+    statusMsg.innerText = 'Lengkapi semua field sebelum lanjut.';
+    statusMsg.className = 'error';
+    statusMsg.style.display = 'block';
+    return;
+  }
+
+  statusMsg.className = '';
+  statusMsg.style.display = 'none';
+
+  const ev = events.find(e => e.name === lomba);
+  if (!ev) return;
+
+  const iconEl = document.getElementById('step2-icon');
+  iconEl.className = 'fa-solid ' + ev.icon;
+  const a = accentMap[ev.accent];
+  iconEl.style.background = a.bg;
+  iconEl.style.color = a.color;
+  iconEl.style.border = '1px solid ' + a.border;
+
+  document.getElementById('step2-title').innerText = ev.name;
+  const badge = document.getElementById('step2-badge');
+  badge.innerText = ev.teamSize + ' Orang / Kelompok';
+  badge.className = 'team-badge accent-' + ev.accent;
+
+  memberContainer.innerHTML = '';
+
+  var ketuaDiv = document.createElement('div');
+  ketuaDiv.className = 'member-field ketua-field';
+  var ketuaLabel = document.createElement('label');
+  ketuaLabel.setAttribute('for', 'nama_ketua');
+  var crownBadge = document.createElement('span');
+  crownBadge.className = 'ketua-badge';
+  crownBadge.innerHTML = '<i class="fa-solid fa-crown"></i> KETUA';
+  ketuaLabel.appendChild(crownBadge);
+  ketuaLabel.appendChild(document.createTextNode(' Nama Ketua'));
+  var ketuaInput = document.createElement('input');
+  ketuaInput.type = 'text';
+  ketuaInput.id = 'nama_ketua';
+  ketuaInput.name = 'nama_ketua';
+  ketuaInput.placeholder = 'Nama lengkap ketua kelompok';
+  ketuaInput.required = true;
+  ketuaDiv.appendChild(ketuaLabel);
+  ketuaDiv.appendChild(ketuaInput);
+  memberContainer.appendChild(ketuaDiv);
+
+  for (let i = 2; i <= ev.teamSize; i++) {
+    const div = document.createElement('div');
+    div.className = 'member-field';
+    div.setAttribute('data-dynamic', '');
+    const label = document.createElement('label');
+    label.setAttribute('for', 'anggota_' + i);
+    label.textContent = 'Anggota ' + i;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'anggota_' + i;
+    input.name = 'anggota_' + i;
+    input.placeholder = 'Nama anggota ' + i;
+    input.required = true;
+    div.appendChild(label);
+    div.appendChild(input);
+    memberContainer.appendChild(div);
+  }
+
+  goToStep(2);
+});
+
+btnBack.addEventListener('click', () => {
+  goToStep(1);
+});
 
 form.addEventListener('submit', e => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (SCRIPT_URL === "URL_GOOGLE_APPS_SCRIPT_ANDA") {
+  if (SCRIPT_URL === "URL_GOOGLE_APPS_SCRIPT_ANDA") {
     alert("Silakan atur variabel SCRIPT_URL Google Apps Script Anda terlebih dahulu.");
     return;
-    }
+  }
 
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim Data...';
-    statusMsg.style.display = 'none';
+  btnSubmit.disabled = true;
+  btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
 
-    fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
-    .then(response => {
-        statusMsg.innerText = "Pendaftaran berhasil dikirim! Panitia akan menghubungi via WhatsApp.";
-        statusMsg.className = "success";
-        statusMsg.style.display = 'block';
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran';
+  const lomba = document.getElementById('event').value;
+  const ev = events.find(e => e.name === lomba);
+
+  const fd = new FormData(form);
+  fd.append('timestamp', new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }));
+
+  fetch(SCRIPT_URL, { method: 'POST', body: fd })
+    .then(() => {
+      form.style.display = 'none';
+      document.querySelector('.step-indicator').style.display = 'none';
+
+      if (ev && ev.lineUrl && ev.lineUrl !== '#') {
+        document.getElementById('success-line-name').innerText = ev.name;
+        document.getElementById('success-line-link').href = ev.lineUrl;
+        document.getElementById('success-line-group').style.display = 'block';
+      } else {
+        document.getElementById('success-line-group').style.display = 'none';
+      }
+
+      document.getElementById('success-panel').style.display = 'block';
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran';
     })
-    .catch(error => {
-        statusMsg.innerText = "Gagal menyambung ke server. Periksa koneksi internet Anda.";
-        statusMsg.className = "error";
-        statusMsg.style.display = 'block';
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran';
+    .catch(() => {
+      statusMsg.innerText = 'Gagal menyambung ke server. Periksa koneksi internet Anda.';
+      statusMsg.className = 'error';
+      statusMsg.style.display = 'block';
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran';
     });
 });
+
+function resetForm() {
+  form.reset();
+  form.style.display = 'block';
+  document.querySelector('.step-indicator').style.display = 'flex';
+  document.getElementById('success-panel').style.display = 'none';
+  document.getElementById('success-line-group').style.display = 'none';
+  statusMsg.className = '';
+  statusMsg.style.display = 'none';
+  memberContainer.innerHTML = '';
+  goToStep(1);
+}
+
+function goToRegister(eventName) {
+  const regNavBtn = Array.from(document.querySelectorAll('.nav-item')).find(a => a.textContent.includes('Registrasi'));
+  switchSection('registrasi', regNavBtn);
+
+  if (eventName) {
+    document.getElementById('event').value = eventName;
+  }
+}
