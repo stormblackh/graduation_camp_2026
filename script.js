@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3nt3IdLZNRcZp7wj9ux8OZ6jCYknsX-38KBBlQd4Dkcome0aTlBtdimnBhUs9tMUG/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzA2HoUZckWvNugL1Lfj4y7KwEmePNbSQ2R9MjCNKAzMO2Y6eAxT1BNfVeyq_oLdLTo/exec";
 
 const events = [
   { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "#" },
@@ -45,27 +45,6 @@ function autoSlide() {
   slides[currentSlide].classList.add('active-slide');
 }
 setInterval(autoSlide, 5000);
-
-const counters = document.querySelectorAll('.counter');
-
-function startCounters() {
-  counters.forEach(counter => {
-    const target = +counter.getAttribute('data-target');
-    const speed = 150;
-    const updateCount = () => {
-      const count = +counter.innerText;
-      const inc = target / speed;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + inc);
-        setTimeout(updateCount, 25);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    updateCount();
-  });
-}
-window.addEventListener('load', startCounters);
 
 const modal = document.getElementById('eventModal');
 const modalTitle = document.getElementById('modalTitle');
@@ -296,3 +275,69 @@ function goToRegister(eventName) {
     document.getElementById('event-select').value = eventName;
   }
 }
+
+/* ========== COUNTDOWN TIMER ========== */
+// ⬇️ UBAH TANGGAL INI SESUAI TANGGAL ACARA
+// Format: new Date(TAHUN, BULAN, TANGGAL, JAM, MENIT)
+// Bulan: 0=Jan, 1=Feb, 2=Mar, ... 11=Des
+// Contoh: 15 Desember 2026 jam 07:00 WIB → new Date(2026, 11, 15, 7, 0)
+// ⚠️ Tanggal ini HARUS di browser lokal (WIB otomatis kalau buka dari Indonesia)
+const EVENT_DATE = new Date(2027, 5, 15, 7, 0);
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = EVENT_DATE - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ========== LIVE TIM COUNT (JSONP) ========== */
+// JSONP callback — dipanggil oleh Google Apps Script doGet
+function _auroraLiveCallback(data) {
+  const countEl = document.getElementById('live-tim-count');
+  if (countEl && typeof data.totalTim === 'number') {
+    countEl.textContent = data.totalTim;
+  }
+}
+
+function fetchLiveTimCount() {
+  // JSONP: bikin <script> tag yang manggil GAS doGet dengan callback
+  const cbName = '_auroraLiveCallback';
+  const base = SCRIPT_URL.split('?')[0];
+  const url = base + '?action=count&callback=' + cbName + '&t=' + Date.now();
+
+  const old = document.getElementById('jsonp-live-tim');
+  if (old) old.remove();
+
+  const s = document.createElement('script');
+  s.id = 'jsonp-live-tim';
+  s.src = url;
+  s.onerror = function() {
+    // Kalau gagal (GAS belum punya doGet), tampilkan '-'
+    document.getElementById('live-tim-count').textContent = '-';
+  };
+  document.body.appendChild(s);
+}
+
+// Fetch pertama kali, terus refresh setiap 30 detik
+fetchLiveTimCount();
+setInterval(fetchLiveTimCount, 30000);

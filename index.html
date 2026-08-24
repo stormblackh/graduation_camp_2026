@@ -43,8 +43,8 @@
           <div class="slide-content">
             <h2>Aurora Borealis OSIS Portal</h2>
             <p>Wadah kreativitas, inspirasi, dan kepemimpinan generasi muda Ignatius Global School.</p>
-            <button class="btn" onclick="goToRegister('')">
-              <i class="fa-solid fa-rocket"></i> Daftar Lomba Sekarang
+            <button class="btn btn-glow" onclick="goToRegister('')">
+              <i class="fa-solid fa-rocket"></i> Daftar Sekarang
             </button>
           </div>
         </div>
@@ -53,29 +53,74 @@
           <div class="slide-content">
             <h2>Pancarkan Potensimu</h2>
             <p>Ikuti ajang kompetisi bergengsi dan ukir prestasi di bawah naungan semangat Aurora IGS.</p>
-            <button class="btn btn-outline" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
+            <button class="btn btn-glow" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
               <i class="fa-solid fa-compass"></i> Jelajahi Event
             </button>
           </div>
         </div>
       </div>
 
-      <div class="stats-container">
-        <div class="stat-card">
-          <i class="fa-solid fa-trophy"></i>
-          <h3 class="counter" data-target="4">0</h3>
-          <p>Lomba Tersedia</p>
+      <!-- Countdown + Live Tim -->
+      <div class="countdown-live-bar">
+        <div class="live-tim-display">
+          <span class="live-dot"></span>
+          <span class="live-label">Tim Terdaftar</span>
+          <span class="live-count" id="live-tim-count">-</span>
         </div>
-        <div class="stat-card">
-          <i class="fa-solid fa-users"></i>
-          <h3 class="counter" data-target="18">0</h3>
-          <p>Orang Per Kelompok</p>
+        <div class="countdown-display" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">00</span>
+            <span class="countdown-unit">Hari</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">00</span>
+            <span class="countdown-unit">Jam</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-mins">00</span>
+            <span class="countdown-unit">Menit</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-secs">00</span>
+            <span class="countdown-unit">Detik</span>
+          </div>
         </div>
-        <div class="stat-card">
-          <i class="fa-solid fa-bolt"></i>
-          <h3 class="counter" data-target="1">0</h3>
-          <p>Kelompok Per Kelas</p>
+      </div>
+
+      <!-- Sekilas Tentang -->
+      <div class="about-section">
+        <div class="about-badge">Graduation Camp 2026</div>
+        <h2 class="about-title">Sekilas Tentang <span class="gradient-text">Graduation Camp 2026</span></h2>
+        <p class="about-desc">
+          Graduation Camp 2026 adalah ajang kompetisi tahunan yang diselenggarakan oleh OSIS SMA Ignatius Global School Palembang
+          sebagai wadah bagi siswa-siswi untuk menunjukkan bakat, kekompakan tim, dan jiwa kepemimpinan sebelum melangkah
+          ke jenjang berikutnya. Melalui berbagai lomba seru seperti Find the Mr White, Step Together, Outbound, dan Echo Hunt,
+          acara ini dirancang untuk membangun <strong>kerjasama</strong>, <strong>strategi</strong>, dan <strong>mental tangguh</strong>.
+        </p>
+        <div class="about-values">
+          <div class="about-value-item">
+            <i class="fa-solid fa-people-group"></i>
+            <span>Kerjasama Tim</span>
+          </div>
+          <div class="about-value-item">
+            <i class="fa-solid fa-brain"></i>
+            <span>Strategi & Logika</span>
+          </div>
+          <div class="about-value-item">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <span>Mental Tangguh</span>
+          </div>
+          <div class="about-value-item">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Sportivitas</span>
+          </div>
         </div>
+        <button class="btn btn-glow" onclick="goToRegister('')">
+          <i class="fa-solid fa-rocket"></i> Daftar Sekarang
+        </button>
       </div>
 
       <div class="visi-misi">
@@ -160,6 +205,11 @@
             <button class="btn btn-sm" onclick="goToRegister('Echo Hunt')">Daftar</button>
           </div>
         </div>
+      </div>
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <button class="btn btn-glow" onclick="goToRegister('')">
+          <i class="fa-solid fa-rocket"></i> Daftar Sekarang
+        </button>
       </div>
     </section>
 
