@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbym_SBYFM-fbR-4oFv2dP8RoM2bhr_V_J1i7E6_22xi0zBKQlL6GzoLCnj_XuXJQuhV/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzfPrCKkKVcvj_gMAriCFM82vYcWd6xQr-851UCPA4suBz9vgRqpKjy89U2ldsoSPLg/exec";
 
 const events = [
   { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "#" },
@@ -87,6 +87,7 @@ function closeModal() {
 }
 
 let currentStep = 1;
+let totalSteps = 2;
 const form = document.getElementById('registration-form');
 const btnNext = document.getElementById('btn-next');
 const btnBack = document.getElementById('btn-back');
@@ -95,6 +96,17 @@ const statusMsg = document.getElementById('status-msg');
 const memberContainer = document.getElementById('member-fields');
 const stepLineFill = document.querySelector('.step-line-fill');
 const stepDots = document.querySelectorAll('.step-dot');
+
+form.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (currentStep < totalSteps) {
+      btnNext.click();
+    } else {
+      btnSubmit.click();
+    }
+  }
+});
 
 function goToStep(step) {
   currentStep = step;
@@ -128,7 +140,7 @@ const accentMap = {
 };
 
 btnNext.addEventListener('click', () => {
-  const lomba = document.getElementById('event').value;
+  const lomba = document.getElementById('event-select').value;
   const kelas = document.getElementById('kelas').value.trim();
 
   if (!lomba || !kelas) {
@@ -172,7 +184,7 @@ btnNext.addEventListener('click', () => {
   ketuaInput.id = 'nama_ketua';
   ketuaInput.name = 'nama_ketua';
   ketuaInput.placeholder = 'Nama lengkap ketua kelompok';
-  ketuaInput.required = true;
+  ketuaInput.required = false;
   ketuaDiv.appendChild(ketuaLabel);
   ketuaDiv.appendChild(ketuaInput);
   memberContainer.appendChild(ketuaDiv);
@@ -189,7 +201,7 @@ btnNext.addEventListener('click', () => {
     input.id = 'anggota_' + i;
     input.name = 'anggota_' + i;
     input.placeholder = 'Nama anggota ' + i;
-    input.required = true;
+    input.required = false;
     div.appendChild(label);
     div.appendChild(input);
     memberContainer.appendChild(div);
@@ -210,11 +222,30 @@ form.addEventListener('submit', e => {
     return;
   }
 
+  const lomba = document.getElementById('event-select').value;
+  const ev = events.find(e => e.name === lomba);
+  if (!ev) return;
+
+  const ketuaName = (document.getElementById('nama_ketua') || {}).value || '';
+  if (!ketuaName.trim()) {
+    statusMsg.innerText = 'Isi nama ketua terlebih dahulu.';
+    statusMsg.className = 'error';
+    statusMsg.style.display = 'block';
+    return;
+  }
+
+  for (let i = 2; i <= ev.teamSize; i++) {
+    const val = (document.getElementById('anggota_' + i) || {}).value || '';
+    if (!val.trim()) {
+      statusMsg.innerText = 'Isi nama Anggota ' + i + ' terlebih dahulu.';
+      statusMsg.className = 'error';
+      statusMsg.style.display = 'block';
+      return;
+    }
+  }
+
   btnSubmit.disabled = true;
   btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
-
-  const lomba = document.getElementById('event').value;
-  const ev = events.find(e => e.name === lomba);
 
   const fd = new FormData(form);
   fd.append('timestamp', new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }));
@@ -262,6 +293,6 @@ function goToRegister(eventName) {
   switchSection('registrasi', regNavBtn);
 
   if (eventName) {
-    document.getElementById('event').value = eventName;
+    document.getElementById('event-select').value = eventName;
   }
 }

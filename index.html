@@ -176,13 +176,13 @@
           <div class="step-dot" data-step="2"><span>2</span><p>Data Anggota</p></div>
         </div>
 
-        <form id="registration-form">
+        <form id="registration-form" novalidate>
           <div class="form-step active-step" data-step="1">
             <div class="form-group">
-              <label for="event">Kategori Event Lomba</label>
+              <label for="event-select">Kategori Event Lomba</label>
               <div class="input-icon-wrapper">
                 <i class="fa-solid fa-trophy"></i>
-                <select id="event" name="event" required>
+                <select id="event-select" name="event">
                   <option value="">-- Pilih Lomba --</option>
                   <option value="Find the Mr White">Find the Mr White (3 Orang)</option>
                   <option value="Step Together">Step Together (4 Orang)</option>
@@ -195,7 +195,7 @@
               <label for="kelas">Kelas / Tingkat</label>
               <div class="input-icon-wrapper">
                 <i class="fa-solid fa-school"></i>
-                <input type="text" id="kelas" name="kelas" required placeholder="Contoh: X IPA 1 / XI IPS 2">
+                <input type="text" id="kelas" name="kelas" placeholder="Contoh: X IPA 1 / XI IPS 2">
               </div>
             </div>
           </div>
