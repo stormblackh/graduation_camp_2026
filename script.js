@@ -7,7 +7,6 @@ const events = [
   { name: "Echo Hunt", teamSize: 5, icon: "fa-ear-listen", accent: "pink", lineUrl: "#" }
 ];
 
-/* ========== NAVBAR ========== */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 30) {
@@ -37,7 +36,6 @@ function switchSection(sectionId, element) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ========== HERO SLIDER ========== */
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 
@@ -48,7 +46,6 @@ function autoSlide() {
 }
 setInterval(autoSlide, 5000);
 
-/* ========== ACCENT MAP ========== */
 const accentMap = {
   green: { bg: 'rgba(0, 255, 170, 0.12)', color: 'var(--aurora-green)', border: 'rgba(0, 255, 170, 0.25)' },
   cyan: { bg: 'rgba(0, 229, 255, 0.12)', color: 'var(--aurora-cyan)', border: 'rgba(0, 229, 255, 0.25)' },
@@ -56,7 +53,6 @@ const accentMap = {
   pink: { bg: 'rgba(255, 0, 127, 0.12)', color: 'var(--aurora-pink)', border: 'rgba(255, 0, 127, 0.25)' }
 };
 
-/* ========== REGISTRATION MODAL ========== */
 const registerModal = document.getElementById('registerModal');
 const regFormView = document.getElementById('reg-form-view');
 const regSuccessView = document.getElementById('reg-success-view');
@@ -73,10 +69,8 @@ function openRegisterModal(eventName) {
 
   currentRegEvent = ev;
 
-  // Set hidden event value
   document.getElementById('event-select').value = ev.name;
 
-  // Set header
   const iconEl = document.getElementById('reg-modal-icon');
   iconEl.className = 'fa-solid ' + ev.icon;
   const a = accentMap[ev.accent];
@@ -89,10 +83,8 @@ function openRegisterModal(eventName) {
   badge.innerText = ev.teamSize + ' Orang / Kelompok';
   badge.className = 'team-badge accent-' + ev.accent;
 
-  // Build member fields
   memberContainer.innerHTML = '';
 
-  // Ketua
   var ketuaDiv = document.createElement('div');
   ketuaDiv.className = 'member-field ketua-field';
   var ketuaLabel = document.createElement('label');
@@ -111,7 +103,6 @@ function openRegisterModal(eventName) {
   ketuaDiv.appendChild(ketuaInput);
   memberContainer.appendChild(ketuaDiv);
 
-  // Anggota
   for (let i = 2; i <= ev.teamSize; i++) {
     const div = document.createElement('div');
     div.className = 'member-field';
@@ -128,7 +119,6 @@ function openRegisterModal(eventName) {
     memberContainer.appendChild(div);
   }
 
-  // Reset to form view
   regFormView.style.display = 'block';
   regSuccessView.style.display = 'none';
   statusMsg.className = '';
@@ -138,11 +128,9 @@ function openRegisterModal(eventName) {
   form.reset();
   document.getElementById('event-select').value = ev.name;
 
-  // Show modal
   registerModal.classList.add('active-modal');
   document.body.style.overflow = 'hidden';
 
-  // Focus kelas
   setTimeout(() => document.getElementById('kelas').focus(), 300);
 }
 
@@ -151,29 +139,11 @@ function closeRegisterModal() {
   document.body.style.overflow = '';
 }
 
-// Close on backdrop click
 registerModal.addEventListener('click', function(e) {
   if (e.target === registerModal) {
     closeRegisterModal();
   }
 });
-
-// Close on Escape
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape' && registerModal.classList.contains('active-modal')) {
@@ -181,7 +151,6 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-/* ========== FORM SUBMIT ========== */
 form.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
@@ -269,12 +238,6 @@ function resetForm() {
   openRegisterModal(currentRegEvent.name);
 }
 
-/* ========== COUNTDOWN TIMER ========== */
-// ⬇️ UBAH TANGGAL INI SESUAI TANGGAL ACARA
-// Format: new Date(TAHUN, BULAN, TANGGAL, JAM, MENIT)
-// Bulan: 0=Jan, 1=Feb, 2=Mar, ... 11=Des
-// Contoh: 13 November 2026 jam 07:00 WIB → new Date(2026, 10, 13, 7, 0)
-// ⚠️ Tanggal ini HARUS di browser lokal (WIB otomatis kalau buka dari Indonesia)
 const EVENT_DATE = new Date(2026, 10, 13, 7, 0);
 
 function updateCountdown() {
@@ -303,7 +266,6 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-/* ========== LIVE TIM COUNT (JSONP) ========== */
 function _auroraLiveCallback(data) {
   const countEl = document.getElementById('live-tim-count');
   if (countEl && typeof data.totalTim === 'number') {
