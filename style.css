@@ -1073,12 +1073,12 @@ footer::before {
 
 .about-badge {
   display: inline-block;
-  padding: 0.35rem 1rem;
+  padding: 0.55rem 1.3rem;
   border-radius: 50px;
   background: rgba(0, 255, 170, 0.1);
   border: 1px solid rgba(0, 255, 170, 0.25);
   color: var(--aurora-green);
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;

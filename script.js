@@ -38,16 +38,6 @@ function switchSection(sectionId, element) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-
-function autoSlide() {
-  slides[currentSlide].classList.remove('active-slide');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active-slide');
-}
-setInterval(autoSlide, 5000);
-
 const accentMap = {
   green: { bg: 'rgba(0, 255, 170, 0.12)', color: 'var(--aurora-green)', border: 'rgba(0, 255, 170, 0.25)' },
   cyan: { bg: 'rgba(0, 229, 255, 0.12)', color: 'var(--aurora-cyan)', border: 'rgba(0, 229, 255, 0.25)' },
