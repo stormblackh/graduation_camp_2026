@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbycxC-3bs2fv3DazhrvqpdaRT3LMoP_8bqQ_iQUD8LqHSxr3kdun4zITG-Tjhg2cqw8/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxaQ4g9qZ0hgUAK4HwDSQFPXReEQgxue_wNo6-oh8pTyaVkrApi2bl3fkkMhO0xfFQv/exec";
 
 const events = [
   { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "https://line.me/R/ti/g/zxjFdbcJB6" },
@@ -198,7 +198,11 @@ form.addEventListener('submit', function(e) {
   btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
 
   const fd = new FormData(form);
-  fd.append('timestamp', new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }));
+  const now = new Date();
+  fd.append('timestamp', now.toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }));
+  fd.append('jam', String(now.getHours()).padStart(2, '0'));
+  fd.append('menit', String(now.getMinutes()).padStart(2, '0'));
+  fd.append('detik', String(now.getSeconds()).padStart(2, '0'));
 
   fetch(SCRIPT_URL, { method: 'POST', body: fd })
     .then(() => {
