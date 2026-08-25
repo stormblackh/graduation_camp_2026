@@ -1,10 +1,10 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydGvUQKH9bxn_sNAF7f3-7f5g1yDSqkKu0L7fFXrLWmefwQL49ucl2m8gXghW3Hq-Z/exec";
 
 const events = [
-  { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "#" },
-  { name: "Step Together", teamSize: 4, icon: "fa-shoe-prints", accent: "cyan", lineUrl: "#" },
-  { name: "Outbound", teamSize: 6, icon: "fa-campground", accent: "purple", lineUrl: "#" },
-  { name: "Echo Hunt", teamSize: 5, icon: "fa-ear-listen", accent: "pink", lineUrl: "#" }
+  { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "https://line.me/R/ti/g/zxjFdbcJB6" },
+  { name: "Step Together", teamSize: 4, icon: "fa-shoe-prints", accent: "cyan", lineUrl: "https://line.me/R/ti/g/y6bQ_F5aJ7" },
+  { name: "Outbound", teamSize: 6, icon: "fa-campground", accent: "purple", lineUrl: "https://line.me/R/ti/g/csn_9gma6c" },
+  { name: "Echo Hunt", teamSize: 5, icon: "fa-ear-listen", accent: "pink", lineUrl: "https://line.me/R/ti/g/R5zrhCUwdU" }
 ];
 
 const navbar = document.getElementById('navbar');
