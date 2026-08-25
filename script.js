@@ -209,13 +209,8 @@ form.addEventListener('submit', function(e) {
     .then(() => {
       regFormView.style.display = 'none';
 
-      if (ev && ev.lineUrl && ev.lineUrl !== '#') {
-        document.getElementById('success-line-name').innerText = ev.name;
-        document.getElementById('success-line-link').href = ev.lineUrl;
-        document.getElementById('success-line-group').style.display = 'block';
-      } else {
-        document.getElementById('success-line-group').style.display = 'none';
-      }
+      document.getElementById('success-line-name').innerText = ev.name;
+      document.getElementById('success-line-link').href = ev.lineUrl || '#';
 
       regSuccessView.style.display = 'block';
       btnSubmit.disabled = false;
