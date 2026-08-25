@@ -182,13 +182,14 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
-  for (let i = 2; i <= ev.teamSize; i++) {
+  for (let i = 1; i < ev.teamSize; i++) {
     const val = (document.getElementById('anggota_' + i) || {}).value || '';
     if (!val.trim()) {
       statusMsg.innerText = 'Isi nama Anggota ' + i + ' terlebih dahulu.';
       statusMsg.className = 'error';
       statusMsg.style.display = 'block';
-      document.getElementById('anggota_' + i).focus();
+      const el = document.getElementById('anggota_' + i);
+      if (el) el.focus();
       return;
     }
   }
