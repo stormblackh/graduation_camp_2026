@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzA2HoUZckWvNugL1Lfj4y7KwEmePNbSQ2R9MjCNKAzMO2Y6eAxT1BNfVeyq_oLdLTo/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydGvUQKH9bxn_sNAF7f3-7f5g1yDSqkKu0L7fFXrLWmefwQL49ucl2m8gXghW3Hq-Z/exec";
 
 const events = [
   { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "#" },
