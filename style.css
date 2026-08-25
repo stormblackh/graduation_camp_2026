@@ -365,7 +365,9 @@ section.active-section {
 .poster-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 .poster-card {
@@ -375,18 +377,17 @@ section.active-section {
   border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
   transition: var(--transition);
-  aspect-ratio: 1 / 2;
+  aspect-ratio: 950 / 1678;
 }
 
 .poster-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
-.poster-card[data-accent="green"]:hover { border-color: var(--aurora-green); box-shadow: 0 20px 50px rgba(0, 255, 170, 0.15), 0 0 0 1px var(--aurora-green); }
-.poster-card[data-accent="cyan"]:hover { border-color: var(--aurora-cyan); box-shadow: 0 20px 50px rgba(0, 229, 255, 0.15), 0 0 0 1px var(--aurora-cyan); }
-.poster-card[data-accent="purple"]:hover { border-color: var(--aurora-purple); box-shadow: 0 20px 50px rgba(189, 0, 255, 0.15), 0 0 0 1px var(--aurora-purple); }
-.poster-card[data-accent="pink"]:hover { border-color: var(--aurora-pink); box-shadow: 0 20px 50px rgba(255, 0, 127, 0.15), 0 0 0 1px var(--aurora-pink); }
+.poster-card[data-accent="green"]:hover { border-color: var(--aurora-green); }
+.poster-card[data-accent="cyan"]:hover { border-color: var(--aurora-cyan); }
+.poster-card[data-accent="purple"]:hover { border-color: var(--aurora-purple); }
+.poster-card[data-accent="pink"]:hover { border-color: var(--aurora-pink); }
 
 .poster-img {
   width: 100%;
@@ -397,7 +398,7 @@ section.active-section {
 }
 
 .poster-card:hover .poster-img {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 .poster-overlay {
@@ -1162,8 +1163,7 @@ footer::before {
   .hero-slider { height: 380px; }
   .slide { padding: 0 1.8rem; }
   .slide-content h2 { font-size: 1.8rem; }
-  .poster-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-  .poster-card { aspect-ratio: 3 / 4; }
+  .poster-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
   .footer-container { grid-template-columns: 1fr; gap: 2.5rem; }
   .countdown-live-bar { flex-direction: column; gap: 1.2rem; padding: 1.2rem 1.5rem; }
   .countdown-num { font-size: 1.6rem; }
