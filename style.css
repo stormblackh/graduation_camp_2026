@@ -3,6 +3,8 @@
   --aurora-cyan: #00e5ff;
   --aurora-purple: #bd00ff;
   --aurora-pink: #ff007f;
+  --aurora-amber: #ffa726;
+  --aurora-blue: #448aff;
   --aurora-dark: #050b14;
   --gradient-aurora-text: linear-gradient(135deg, #ffffff 0%, var(--aurora-green) 50%, var(--aurora-cyan) 100%);
   --gradient-aurora-btn: linear-gradient(135deg, #00b894 0%, #00cec9 50%, #6c5ce7 100%);
@@ -387,6 +389,8 @@ section.active-section {
 .poster-card[data-accent="cyan"]:hover { border-color: var(--aurora-cyan); }
 .poster-card[data-accent="purple"]:hover { border-color: var(--aurora-purple); }
 .poster-card[data-accent="pink"]:hover { border-color: var(--aurora-pink); }
+.poster-card[data-accent="amber"]:hover { border-color: var(--aurora-amber); }
+.poster-card[data-accent="blue"]:hover { border-color: var(--aurora-blue); }
 
 .poster-img {
   width: 100%;
@@ -431,6 +435,8 @@ section.active-section {
 .poster-card[data-accent="cyan"] .poster-team-badge { background: rgba(0, 229, 255, 0.15); color: var(--aurora-cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
 .poster-card[data-accent="purple"] .poster-team-badge { background: rgba(189, 0, 255, 0.15); color: var(--aurora-purple); border: 1px solid rgba(189, 0, 255, 0.3); }
 .poster-card[data-accent="pink"] .poster-team-badge { background: rgba(255, 0, 127, 0.15); color: var(--aurora-pink); border: 1px solid rgba(255, 0, 127, 0.3); }
+.poster-card[data-accent="amber"] .poster-team-badge { background: rgba(255, 167, 38, 0.15); color: var(--aurora-amber); border: 1px solid rgba(255, 167, 38, 0.3); }
+.poster-card[data-accent="blue"] .poster-team-badge { background: rgba(68, 138, 255, 0.15); color: var(--aurora-blue); border: 1px solid rgba(68, 138, 255, 0.3); }
 
 .poster-overlay h3 {
   font-size: 1.25rem;
@@ -443,7 +449,9 @@ section.active-section {
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -452,9 +460,13 @@ section.active-section {
 .poster-card:hover .poster-overlay p {
   opacity: 1;
   transform: translateY(0);
+  max-height: 120px;
+  margin-bottom: 1rem;
 }
 
 .poster-daftar {
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(15px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
@@ -464,6 +476,7 @@ section.active-section {
 .poster-card:hover .poster-daftar {
   opacity: 1;
   transform: translateY(0);
+  max-height: 60px;
 }
 
 .reg-modal-content {
@@ -538,6 +551,8 @@ section.active-section {
 .team-badge.accent-cyan { background: rgba(0, 229, 255, 0.15); color: var(--aurora-cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
 .team-badge.accent-purple { background: rgba(189, 0, 255, 0.15); color: var(--aurora-purple); border: 1px solid rgba(189, 0, 255, 0.3); }
 .team-badge.accent-pink { background: rgba(255, 0, 127, 0.15); color: var(--aurora-pink); border: 1px solid rgba(255, 0, 127, 0.3); }
+.team-badge.accent-amber { background: rgba(255, 167, 38, 0.15); color: var(--aurora-amber); border: 1px solid rgba(255, 167, 38, 0.3); }
+.team-badge.accent-blue { background: rgba(68, 138, 255, 0.15); color: var(--aurora-blue); border: 1px solid rgba(68, 138, 255, 0.3); }
 
 .form-group {
   margin-bottom: 1.25rem;

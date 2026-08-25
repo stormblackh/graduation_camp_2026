@@ -4,7 +4,9 @@ const events = [
   { name: "Find the Mr White", teamSize: 3, icon: "fa-magnifying-glass", accent: "green", lineUrl: "https://line.me/R/ti/g/zxjFdbcJB6" },
   { name: "Step Together", teamSize: 4, icon: "fa-shoe-prints", accent: "cyan", lineUrl: "https://line.me/R/ti/g/y6bQ_F5aJ7" },
   { name: "Outbound", teamSize: 6, icon: "fa-campground", accent: "purple", lineUrl: "https://line.me/R/ti/g/csn_9gma6c" },
-  { name: "Echo Hunt", teamSize: 5, icon: "fa-ear-listen", accent: "pink", lineUrl: "https://line.me/R/ti/g/R5zrhCUwdU" }
+  { name: "Echo Hunt", teamSize: 5, icon: "fa-ear-listen", accent: "pink", lineUrl: "https://line.me/R/ti/g/R5zrhCUwdU" },
+  { name: "Speed Number", teamSize: 5, icon: "fa-bolt-lightning", accent: "amber", lineUrl: "https://line.me/R/ti/g/-DLeGrrcwA" },
+  { name: "Tail Relay", teamSize: 5, icon: "fa-people-arrows", accent: "blue", lineUrl: "https://line.me/R/ti/g/DtGSUEkWtM" }
 ];
 
 const navbar = document.getElementById('navbar');
@@ -50,7 +52,9 @@ const accentMap = {
   green: { bg: 'rgba(0, 255, 170, 0.12)', color: 'var(--aurora-green)', border: 'rgba(0, 255, 170, 0.25)' },
   cyan: { bg: 'rgba(0, 229, 255, 0.12)', color: 'var(--aurora-cyan)', border: 'rgba(0, 229, 255, 0.25)' },
   purple: { bg: 'rgba(189, 0, 255, 0.12)', color: 'var(--aurora-purple)', border: 'rgba(189, 0, 255, 0.25)' },
-  pink: { bg: 'rgba(255, 0, 127, 0.12)', color: 'var(--aurora-pink)', border: 'rgba(255, 0, 127, 0.25)' }
+  pink: { bg: 'rgba(255, 0, 127, 0.12)', color: 'var(--aurora-pink)', border: 'rgba(255, 0, 127, 0.25)' },
+  amber: { bg: 'rgba(255, 167, 38, 0.12)', color: 'var(--aurora-amber)', border: 'rgba(255, 167, 38, 0.25)' },
+  blue: { bg: 'rgba(68, 138, 255, 0.12)', color: 'var(--aurora-blue)', border: 'rgba(68, 138, 255, 0.25)' }
 };
 
 const registerModal = document.getElementById('registerModal');
@@ -103,7 +107,7 @@ function openRegisterModal(eventName) {
   ketuaDiv.appendChild(ketuaInput);
   memberContainer.appendChild(ketuaDiv);
 
-  for (let i = 2; i <= ev.teamSize; i++) {
+  for (let i = 1; i < ev.teamSize; i++) {
     const div = document.createElement('div');
     div.className = 'member-field';
     const label = document.createElement('label');
