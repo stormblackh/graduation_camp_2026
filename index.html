@@ -16,7 +16,6 @@
   <header id="navbar">
     <nav>
       <div class="logo-container">
-        <!-- <i class="fa-solid fa-wand-magic-sparkles"></i> -->
         <a href="#" class="nav-item active" style="text-decoration: none" onclick="switchSection('home', this)">
           <div class="logo-text" style="display: flex; align-items: center;">
             <img style="width: 50px;" src="img/maskot.png" alt="Logo Aurora">
@@ -30,7 +29,6 @@
       <ul class="nav-links" id="nav-menu">
         <li><a href="#" class="nav-item active" onclick="switchSection('home', this)">Home</a></li>
         <li><a href="#" class="nav-item" onclick="switchSection('event', this)">Event</a></li>
-        <li><a href="#" class="nav-item" onclick="switchSection('registrasi', this)">Registrasi Lomba</a></li>
       </ul>
     </nav>
   </header>
@@ -43,8 +41,8 @@
           <div class="slide-content">
             <h2>Aurora Borealis OSIS Portal</h2>
             <p>Wadah kreativitas, inspirasi, dan kepemimpinan generasi muda Ignatius Global School.</p>
-            <button class="btn btn-glow" onclick="goToRegister('')">
-              <i class="fa-solid fa-rocket"></i> Daftar Sekarang
+            <button class="btn btn-glow" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
+              <i class="fa-solid fa-compass"></i> Jelajahi Event
             </button>
           </div>
         </div>
@@ -118,8 +116,8 @@
             <span>Sportivitas</span>
           </div>
         </div>
-        <button class="btn btn-glow" onclick="goToRegister('')">
-          <i class="fa-solid fa-rocket"></i> Daftar Sekarang
+        <button class="btn btn-glow" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
+          <i class="fa-solid fa-compass"></i> Lihat Event
         </button>
       </div>
     </section>
@@ -127,175 +125,115 @@
     <section id="event">
       <div class="section-header">
         <h2 class="gradient-title">Lomba Graduation Camp 2026</h2>
-        <p>Satu kelompok per kelas. Pilih lomba dan daftarkan tim kamu!</p>
+        <p>Pilih poster lomba dan daftarkan tim kamu!</p>
       </div>
 
-      <div class="event-grid">
-        <div class="event-item" data-category="all">
-          <div class="event-icon-circle accent-green">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <h3>Find the Mr White</h3>
-          <div class="event-badges">
-            <span class="team-badge accent-green">3 Orang/Kelompok</span>
-            <span class="cat-badge">Per Kelas</span>
-          </div>
-          <p class="event-desc">Temukan identitas misterius di balik topeng. Kelompok terbaik yang berhasil mengungkap Mr White menang!</p>
-          <div class="event-actions">
-            <button class="btn btn-sm btn-detail" onclick="openModal('Find the Mr White', 'Temukan siapa Mr White di antara semua peserta. Setiap kelompok harus menganalisis clue dan suspect untuk memecahkan teka-teki.')">Detail</button>
-            <button class="btn btn-sm" onclick="goToRegister('Find the Mr White')">Daftar</button>
-          </div>
-        </div>
-
-        <div class="event-item" data-category="all">
-          <div class="event-icon-circle accent-cyan">
-            <i class="fa-solid fa-shoe-prints"></i>
-          </div>
-          <h3>Step Together</h3>
-          <div class="event-badges">
-            <span class="team-badge accent-cyan">4 Orang/Kelompok</span>
-            <span class="cat-badge">Per Kelas</span>
-          </div>
-          <p class="event-desc">Tantangan kerjasama tim yang menguji kekompakan dan strategi kelompok dalam setiap langkah.</p>
-          <div class="event-actions">
-            <button class="btn btn-sm btn-detail" onclick="openModal('Step Together', 'Lomba kerjasama tim dimana semua anggota harus bergerak secara kompak menyusuri rintangan. Kebersamaan adalah kunci kemenangan.')">Detail</button>
-            <button class="btn btn-sm" onclick="goToRegister('Step Together')">Daftar</button>
-          </div>
-        </div>
-
-        <div class="event-item" data-category="all">
-          <div class="event-icon-circle accent-purple">
-            <i class="fa-solid fa-campground"></i>
-          </div>
-          <h3>Outbound</h3>
-          <div class="event-badges">
-            <span class="team-badge accent-purple">6 Orang/Kelompok</span>
-            <span class="cat-badge">Per Kelas</span>
-          </div>
-          <p class="event-desc">Petualangan outdoor seru yang membangun jiwa kepemimpinan dan kerjasama di alam terbuka.</p>
-          <div class="event-actions">
-            <button class="btn btn-sm btn-detail" onclick="openModal('Outbound', 'Aktivitas outdoor yang menguji fisik, mental, dan kerjasama tim. Termasuk flying fox, jembatan tali, dan tantangan alam lainnya.')">Detail</button>
-            <button class="btn btn-sm" onclick="goToRegister('Outbound')">Daftar</button>
-          </div>
-        </div>
-
-        <div class="event-item" data-category="all">
-          <div class="event-icon-circle accent-pink">
-            <i class="fa-solid fa-ear-listen"></i>
-          </div>
-          <h3>Echo Hunt</h3>
-          <div class="event-badges">
-            <span class="team-badge accent-pink">5 Orang/Kelompok</span>
-            <span class="cat-badge">Per Kelas</span>
-          </div>
-          <p class="event-desc">Berburu petunjuk tersembunyi dan pecahkan teka-teki echo untuk menjadi juara.</p>
-          <div class="event-actions">
-            <button class="btn btn-sm btn-detail" onclick="openModal('Echo Hunt', 'Cari dan kumpulkan semua petunjuk echo yang tersebar di area lomba. Tim pertama yang berhasil memecahkan semua teka-teki menang.')">Detail</button>
-            <button class="btn btn-sm" onclick="goToRegister('Echo Hunt')">Daftar</button>
-          </div>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 2.5rem;">
-        <button class="btn btn-glow" onclick="goToRegister('')">
-          <i class="fa-solid fa-rocket"></i> Daftar Sekarang
-        </button>
-      </div>
-    </section>
-
-    <section id="registrasi">
-      <div class="section-header">
-        <h2 class="gradient-title">Formulir Pendaftaran</h2>
-        <p>Daftarkan tim kamu untuk event pilihan</p>
-      </div>
-
-      <div class="form-wrapper">
-        <div class="step-indicator">
-          <div class="step-dot active" data-step="1"><span>1</span><p>Pilih Lomba</p></div>
-          <div class="step-line"><div class="step-line-fill"></div></div>
-          <div class="step-dot" data-step="2"><span>2</span><p>Data Anggota</p></div>
-        </div>
-
-        <form id="registration-form" novalidate>
-          <div class="form-step active-step" data-step="1">
-            <div class="form-group">
-              <label for="event-select">Kategori Event Lomba</label>
-              <div class="input-icon-wrapper">
-                <i class="fa-solid fa-trophy"></i>
-                <select id="event-select" name="event">
-                  <option value="">-- Pilih Lomba --</option>
-                  <option value="Find the Mr White">Find the Mr White (3 Orang)</option>
-                  <option value="Step Together">Step Together (4 Orang)</option>
-                  <option value="Outbound">Outbound (6 Orang)</option>
-                  <option value="Echo Hunt">Echo Hunt (5 Orang)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="kelas">Kelas / Tingkat</label>
-              <div class="input-icon-wrapper">
-                <i class="fa-solid fa-school"></i>
-                <input type="text" id="kelas" name="kelas" placeholder="Contoh: X INTER 1 / XI IPS 2">
-              </div>
-            </div>
-          </div>
-
-          <div class="form-step" data-step="2">
-            <div class="step2-header">
-              <div class="step2-lomba-info">
-                <i id="step2-icon" class="fa-solid fa-trophy"></i>
-                <div>
-                  <h3 id="step2-title">-</h3>
-                  <span id="step2-badge" class="team-badge">-</span>
-                </div>
-              </div>
-              <p class="step2-subtitle">Isi nama semua anggota tim</p>
-            </div>
-            <div id="member-fields"></div>
-          </div>
-
-          <div class="form-nav">
-            <button type="button" id="btn-back" class="btn-step-back" style="display: none;">
-              <i class="fa-solid fa-arrow-left"></i> Kembali
+      <div class="poster-grid">
+        <div class="poster-card" data-accent="green">
+          <img src="img/32060.jpg" alt="Find the Mr White" class="poster-img" loading="lazy">
+          <div class="poster-overlay">
+            <span class="poster-team-badge">3 Orang / Kelompok</span>
+            <h3>Find the Mr White</h3>
+            <p>Temukan identitas misterius di balik topeng. Kelompok terbaik yang berhasil mengungkap Mr White menang!</p>
+            <button class="btn btn-glow btn-sm poster-daftar" onclick="openRegisterModal('Find the Mr White')">
+              <i class="fa-solid fa-rocket"></i> Daftar
             </button>
-            <div class="form-nav-right">
-              <button type="button" id="btn-next" class="btn-step-next">
-                Lanjut <i class="fa-solid fa-arrow-right"></i>
-              </button>
-              <button type="submit" id="btn-submit" class="btn-step-submit" style="display: none;">
-                <i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran
-              </button>
-            </div>
           </div>
+        </div>
 
-          <div id="status-msg"></div>
-        </form>
-
-        <div id="success-panel" style="display: none;">
-          <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-          <h3>Pendaftaran Berhasil!</h3>
-          <p>Panitia akan menghubungi ketua tim via WhatsApp.</p>
-          <div id="success-line-group" class="success-line-group" style="display: none;">
-            <div class="success-line-divider"></div>
-            <p class="success-line-label"><i class="fa-brands fa-line"></i> Grup LINE Lomba</p>
-            <p id="success-line-name" class="success-line-lomba">-</p>
-            <a id="success-line-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-line"></i> Buka Grup LINE
-            </a>
+        <div class="poster-card" data-accent="cyan">
+          <img src="img/32061.jpg" alt="Step Together" class="poster-img" loading="lazy">
+          <div class="poster-overlay">
+            <span class="poster-team-badge">4 Orang / Kelompok</span>
+            <h3>Step Together</h3>
+            <p>Tantangan kerjasama tim yang menguji kekompakan dan strategi kelompok dalam setiap langkah.</p>
+            <button class="btn btn-glow btn-sm poster-daftar" onclick="openRegisterModal('Step Together')">
+              <i class="fa-solid fa-rocket"></i> Daftar
+            </button>
           </div>
-          <button type="button" class="btn" onclick="resetForm()" style="margin-top: 1.25rem;">
-            <i class="fa-solid fa-plus"></i> Daftar Lagi
-          </button>
+        </div>
+
+        <div class="poster-card" data-accent="purple">
+          <img src="img/32063.jpg" alt="Outbound" class="poster-img" loading="lazy">
+          <div class="poster-overlay">
+            <span class="poster-team-badge">6 Orang / Kelompok</span>
+            <h3>Outbound</h3>
+            <p>Petualangan outdoor seru yang membangun jiwa kepemimpinan dan kerjasama di alam terbuka.</p>
+            <button class="btn btn-glow btn-sm poster-daftar" onclick="openRegisterModal('Outbound')">
+              <i class="fa-solid fa-rocket"></i> Daftar
+            </button>
+          </div>
+        </div>
+
+        <div class="poster-card" data-accent="pink">
+          <img src="img/32062.jpg" alt="Echo Hunt" class="poster-img" loading="lazy">
+          <div class="poster-overlay">
+            <span class="poster-team-badge">5 Orang / Kelompok</span>
+            <h3>Echo Hunt</h3>
+            <p>Berburu petunjuk tersembunyi dan pecahkan teka-teki echo untuk menjadi juara.</p>
+            <button class="btn btn-glow btn-sm poster-daftar" onclick="openRegisterModal('Echo Hunt')">
+              <i class="fa-solid fa-rocket"></i> Daftar
+            </button>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="modal" id="eventModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h3 id="modalTitle" style="color: #ffffff; margin-bottom: 0.8rem; font-size: 1.4rem;"></h3>
-      <p id="modalDesc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6;"></p>
-      <button class="btn" id="modalRegisterBtn" style="width: 100%; justify-content: center;">Daftar Lomba Ini</button>
+  <!-- Registration Modal -->
+  <div class="modal" id="registerModal">
+    <div class="modal-content reg-modal-content">
+      <span class="close-modal" onclick="closeRegisterModal()">&times;</span>
+
+      <!-- Form View -->
+      <div id="reg-form-view">
+        <div class="reg-modal-header">
+          <i id="reg-modal-icon" class="fa-solid fa-trophy"></i>
+          <div>
+            <h3 id="reg-modal-title">-</h3>
+            <span id="reg-modal-badge" class="team-badge accent-green">-</span>
+          </div>
+        </div>
+
+        <form id="registration-form" novalidate>
+          <input type="hidden" id="event-select" name="event">
+
+          <div class="form-group">
+            <label for="kelas">Kelas / Tingkat</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-school"></i>
+              <input type="text" id="kelas" name="kelas" placeholder="Contoh: X INTER 1 / XI IPS 2">
+            </div>
+          </div>
+
+          <p class="reg-members-label">Isi nama semua anggota tim</p>
+          <div id="member-fields"></div>
+
+          <button type="submit" id="btn-submit" class="btn-step-submit" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+            <i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran
+          </button>
+
+          <div id="status-msg"></div>
+        </form>
+      </div>
+
+      <!-- Success View -->
+      <div id="reg-success-view" style="display: none;">
+        <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <h3>Pendaftaran Berhasil!</h3>
+        <p>Panitia akan menghubungi ketua tim via WhatsApp.</p>
+        <div id="success-line-group" class="success-line-group" style="display: none;">
+          <div class="success-line-divider"></div>
+          <p class="success-line-label"><i class="fa-brands fa-line"></i> Grup LINE Lomba</p>
+          <p id="success-line-name" class="success-line-lomba">-</p>
+          <a id="success-line-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="width: 100%; justify-content: center;">
+            <i class="fa-brands fa-line"></i> Buka Grup LINE
+          </a>
+        </div>
+        <button type="button" class="btn" onclick="resetForm()" style="margin-top: 1.25rem; width: 100%; justify-content: center;">
+          <i class="fa-solid fa-plus"></i> Daftar Lagi
+        </button>
+      </div>
     </div>
   </div>
 
@@ -313,7 +251,6 @@
         <ul class="footer-links">
           <li><a href="#" onclick="switchSection('home', document.querySelectorAll('.nav-item')[0])"><i class="fa-solid fa-angle-right"></i> Beranda / Home</a></li>
           <li><a href="#" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])"><i class="fa-solid fa-angle-right"></i> Agenda & Event Lomba</a></li>
-          <li><a href="#" onclick="switchSection('registrasi', document.querySelectorAll('.nav-item')[2])"><i class="fa-solid fa-angle-right"></i> Form Registrasi</a></li>
         </ul>
       </div>
       <div class="footer-col">
