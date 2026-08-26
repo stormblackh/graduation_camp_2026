@@ -74,7 +74,7 @@ function openRegisterModal(eventName) {
 
   document.getElementById('reg-modal-title').innerText = ev.name;
   const badge = document.getElementById('reg-modal-badge');
-  badge.innerText = ev.teamSize + ' Orang / Kelompok';
+  badge.innerText = ev.teamSize + ' Orang / Kelas';
   badge.className = 'team-badge accent-' + ev.accent;
 
   memberContainer.innerHTML = '';
@@ -92,7 +92,7 @@ function openRegisterModal(eventName) {
   ketuaInput.type = 'text';
   ketuaInput.id = 'nama_ketua';
   ketuaInput.name = 'nama_ketua';
-  ketuaInput.placeholder = 'Nama lengkap ketua kelompok';
+  ketuaInput.placeholder = 'Nama lengkap ketua';
   ketuaDiv.appendChild(ketuaLabel);
   ketuaDiv.appendChild(ketuaInput);
   memberContainer.appendChild(ketuaDiv);
