@@ -232,7 +232,7 @@ function resetForm() {
   openRegisterModal(currentRegEvent.name);
 }
 
-const EVENT_DATE = new Date(2026, 10, 13, 7, 0);
+const EVENT_DATE = new Date(2026, 10, 13, 13, 30);
 
 function updateCountdown() {
   const now = new Date();
