@@ -25,14 +25,21 @@ hamburgerBtn.addEventListener('click', () => {
   navMenu.classList.toggle('show');
 });
 
-function switchSection(sectionId, element) {
+function switchSection(sectionId) {
   document.querySelectorAll('section').forEach(sec => sec.classList.remove('active-section'));
-  document.getElementById(sectionId).classList.add('active-section');
+  const target = document.getElementById(sectionId);
+  if (target) target.classList.add('active-section');
 
-  if (element) {
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    element.classList.add('active');
-  }
+  // Auto-detect the correct nav link based on sectionId
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(a => {
+    const onclick = a.getAttribute('onclick') || '';
+    if (onclick.includes("'" + sectionId + "'")) {
+      a.classList.add('active');
+    } else {
+      a.classList.remove('active');
+    }
+  });
 
   navMenu.classList.remove('show');
   window.scrollTo({ top: 0, behavior: 'smooth' });

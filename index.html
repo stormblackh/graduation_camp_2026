@@ -16,7 +16,7 @@
   <header id="navbar">
     <nav>
       <div class="logo-container">
-        <a href="#" class="nav-item active logo-link" onclick="switchSection('home', this)">
+        <a href="#" class="nav-item active logo-link" onclick="switchSection('home')">
           <div class="logo-text">
             <img class="logo-img" src="img/maskot.png" alt="Logo Aurora">
             <h1 class="logo-title">VALÉORA</h1>
@@ -27,8 +27,8 @@
         <i class="fa-solid fa-bars-staggered"></i>
       </div>
       <ul class="nav-links" id="nav-menu">
-        <li><a href="#" class="nav-item active" onclick="switchSection('home', this)">Home</a></li>
-        <li><a href="#" class="nav-item" onclick="switchSection('event', this)">Event</a></li>
+        <li><a href="#" class="nav-item active" onclick="switchSection('home')">Home</a></li>
+        <li><a href="#" class="nav-item" onclick="switchSection('event')">Event</a></li>
       </ul>
     </nav>
   </header>
@@ -41,7 +41,7 @@
           <div class="slide-content">
             <h2>VALÉORA</h2>
             <p>berasal dari perpaduan Vale, yang dalam bahasa Latin berarti “selamat tinggal”, dan Aurora, yang melambangkan fajar cahaya pertama yang menandai hadirnya sebuah awal baru. Perpaduan keduanya menggambarkan perpisahan terhadap satu perjalanan sekaligus langkah menuju fase kehidupan yang baru.</p>
-            <button class="btn btn-glow" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
+            <button class="btn btn-glow" onclick="switchSection('event')">
               <i class="fa-solid fa-compass"></i> Jelajahi Event
             </button>
           </div>
@@ -105,7 +105,7 @@
             <span>Sportivitas</span>
           </div>
         </div>
-        <button class="btn btn-glow" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])">
+        <button class="btn btn-glow" onclick="switchSection('event')">
           <i class="fa-solid fa-compass"></i> Lihat Event
         </button>
       </div>
@@ -258,8 +258,8 @@
       <div class="footer-col">
         <h3>Navigasi Cepat</h3>
         <ul class="footer-links">
-          <li><a href="#" onclick="switchSection('home', document.querySelectorAll('.nav-item')[0])"><i class="fa-solid fa-angle-right"></i> Beranda / Home</a></li>
-          <li><a href="#" onclick="switchSection('event', document.querySelectorAll('.nav-item')[1])"><i class="fa-solid fa-angle-right"></i> Agenda & Event Lomba</a></li>
+          <li><a href="#" onclick="switchSection('home')"><i class="fa-solid fa-angle-right"></i> Beranda / Home</a></li>
+          <li><a href="#" onclick="switchSection('event')"><i class="fa-solid fa-angle-right"></i> Agenda & Event Lomba</a></li>
         </ul>
       </div>
       <div class="footer-col">
